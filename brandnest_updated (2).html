@@ -1512,15 +1512,25 @@
       vector-effect: non-scaling-stroke;
     }
 
-    .why-draw-path {
+    .why-trace-glow-path,
+    .why-trace-core-path {
       fill: none;
-      stroke: rgba(86, 170, 255, 0.72);
-      stroke-width: 1.7;
       stroke-linecap: round;
       stroke-linejoin: round;
       vector-effect: non-scaling-stroke;
-      opacity: 1;
-      filter: drop-shadow(0 0 8px rgba(86, 170, 255, 0.45)) drop-shadow(0 0 20px rgba(28, 102, 255, 0.26));
+      opacity: 0;
+    }
+
+    .why-trace-glow-path {
+      stroke: rgba(0, 127, 255, 0.72);
+      stroke-width: 5.5;
+      filter: blur(2px) drop-shadow(0 0 10px rgba(0, 153, 255, 0.55));
+    }
+
+    .why-trace-core-path {
+      stroke: #0099ff;
+      stroke-width: 2.15;
+      filter: drop-shadow(0 0 4px rgba(0, 153, 255, 0.95)) drop-shadow(0 0 12px rgba(0, 89, 255, 0.58));
     }
 
     .why-label {
@@ -1875,12 +1885,19 @@
         <path class="why-track-path" d="M595 210 C685 210 768 210 880 210"/>
         <path class="why-track-path" d="M595 316 C685 338 782 348 880 210"/>
 
-        <path class="why-draw-path" d="M120 210 C218 72 315 82 405 104"/>
-        <path class="why-draw-path" d="M120 210 C232 210 315 210 405 210"/>
-        <path class="why-draw-path" d="M120 210 C218 348 315 338 405 316"/>
-        <path class="why-draw-path" d="M595 104 C685 82 782 72 880 210"/>
-        <path class="why-draw-path" d="M595 210 C685 210 768 210 880 210"/>
-        <path class="why-draw-path" d="M595 316 C685 338 782 348 880 210"/>
+        <path class="why-trace-glow-path" d="M120 210 C218 72 315 82 405 104"/>
+        <path class="why-trace-glow-path" d="M120 210 C232 210 315 210 405 210"/>
+        <path class="why-trace-glow-path" d="M120 210 C218 348 315 338 405 316"/>
+        <path class="why-trace-glow-path" d="M595 104 C685 82 782 72 880 210"/>
+        <path class="why-trace-glow-path" d="M595 210 C685 210 768 210 880 210"/>
+        <path class="why-trace-glow-path" d="M595 316 C685 338 782 348 880 210"/>
+
+        <path class="why-trace-core-path" d="M120 210 C218 72 315 82 405 104"/>
+        <path class="why-trace-core-path" d="M120 210 C232 210 315 210 405 210"/>
+        <path class="why-trace-core-path" d="M120 210 C218 348 315 338 405 316"/>
+        <path class="why-trace-core-path" d="M595 104 C685 82 782 72 880 210"/>
+        <path class="why-trace-core-path" d="M595 210 C685 210 768 210 880 210"/>
+        <path class="why-trace-core-path" d="M595 316 C685 338 782 348 880 210"/>
 
       </svg>
 
@@ -2281,7 +2298,8 @@
       const whySec = document.querySelector('#why-brandnest');
       if (!whySec || !window.gsap) return;
 
-      const drawPaths = gsap.utils.toArray(whySec.querySelectorAll('.why-draw-path'));
+      const traceCores = gsap.utils.toArray(whySec.querySelectorAll('.why-trace-core-path'));
+      const traceGlows = gsap.utils.toArray(whySec.querySelectorAll('.why-trace-glow-path'));
 
       // Labels and ghost text reveal on scroll entry
       const revealTl = gsap.timeline({
@@ -2297,38 +2315,60 @@
         .to('.why-label-inner', { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.13 }, 0.2)
         .to('.why-cta-card',    { opacity: 1, y: 0, duration: 0.9 }, 0.65);
 
-      drawPaths.forEach((path) => {
-        const length = path.getTotalLength();
-        gsap.set(path, {
-          strokeDasharray: length,
-          strokeDashoffset: length,
-          opacity: 0
+      const runners = traceCores.map((core, index) => ({
+        core,
+        glow: traceGlows[index]
+      })).filter((runner) => runner.core && runner.glow);
+
+      runners.forEach(({ core, glow }) => {
+        const length = core.getTotalLength();
+        const traceLength = Math.min(34, Math.max(24, length * 0.16));
+        [core, glow].forEach((path) => {
+          path.dataset.traceLength = traceLength;
+          path.dataset.pathLength = length;
+          gsap.set(path, {
+            strokeDasharray: `${traceLength} ${length + traceLength}`,
+            strokeDashoffset: length + traceLength,
+            opacity: 0
+          });
         });
       });
 
       const drawConnectorLoop = () => {
-        const traceTl = gsap.timeline({ repeat: -1, repeatDelay: 0.35 });
+        const traceTl = gsap.timeline({ repeat: -1, repeatDelay: 0.28 });
+        const leftRunners = runners.slice(0, 3);
+        const rightRunners = runners.slice(3, 6);
 
-        traceTl
-          .to(drawPaths, {
-            opacity: 1,
-            strokeDashoffset: 0,
-            duration: 1.35,
-            ease: 'power2.inOut',
-            stagger: { each: 0.14, from: 'start' }
-          })
-          .to(drawPaths, {
-            opacity: 0.26,
-            duration: 0.8,
-            ease: 'sine.inOut'
-          }, '+=0.15')
-          .to(drawPaths, {
-            strokeDashoffset: (index, path) => path.getTotalLength(),
-            opacity: 0,
-            duration: 0.75,
-            ease: 'power2.inOut',
-            stagger: { each: 0.08, from: 'end' }
-          }, '+=0.2');
+        const setRunnerStart = (runner) => {
+          const length = Number(runner.core.dataset.pathLength);
+          const traceLength = Number(runner.core.dataset.traceLength);
+          gsap.set([runner.glow, runner.core], {
+            strokeDashoffset: length + traceLength,
+            opacity: 0
+          });
+        };
+
+        const animateRunnerGroup = (group, at) => {
+          const glows = group.map((runner) => runner.glow);
+          const cores = group.map((runner) => runner.core);
+          const allPaths = [...glows, ...cores];
+
+          traceTl
+            .add(() => group.forEach(setRunnerStart), at)
+            .to(glows, { opacity: 0.65, duration: 0.08, ease: 'power1.out' }, at)
+            .to(cores, { opacity: 1, duration: 0.08, ease: 'power1.out' }, at)
+            .to(allPaths, {
+              strokeDashoffset: (index, path) => -Number(path.dataset.traceLength),
+              duration: 0.92,
+              ease: 'none'
+            }, at)
+            .to(glows, { opacity: 0, duration: 0.14, ease: 'power1.in' }, at + 0.78)
+            .to(cores, { opacity: 0, duration: 0.14, ease: 'power1.in' }, at + 0.78);
+        };
+
+        animateRunnerGroup(leftRunners, 0);
+        animateRunnerGroup(rightRunners, 0.72);
+        traceTl.to({}, { duration: 0.12 });
 
         return traceTl;
       };
