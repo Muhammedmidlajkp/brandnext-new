@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BRANDNEST | Kerala's Leading Video Production Company</title>
-  <link rel="icon" type="image/png" href="Brandnest.png">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800;900&family=Outfit:wght@400;600;800;900&display=swap"
     rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -146,14 +147,18 @@
       gap: 24px;
       width: 92%;
       max-width: 980px;
-      background: rgba(7, 7, 26, 0.55);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(79, 77, 184, 0.22);
+      background: rgba(10, 13, 30, 0.35);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 9999px;
       padding: 10px 12px 10px 28px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(79, 77, 184, 0.08) inset;
-      transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+      transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       animation: navSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -170,9 +175,11 @@
     }
 
     nav.scrolled {
-      background: rgba(7, 7, 26, 0.82);
-      border-color: rgba(79, 77, 184, 0.38);
-      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6), 0 0 32px rgba(79, 77, 184, 0.12);
+      background: rgba(7, 11, 26, 0.6);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(0, 194, 255, 0.08);
     }
 
     /* ── LOGO ── */
@@ -373,10 +380,34 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 100px 60px;
+      justify-content: center;
+      padding: 140px 24px 80px 24px;
       position: relative;
       overflow: hidden;
       background: #03030b;
+    }
+
+    .hero-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      display: block;
+      pointer-events: none;
+      transform: scale(1.01);
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(3, 3, 11, 0.25) 0%, rgba(3, 3, 11, 0.75) 100%);
+      backdrop-filter: blur(2px) brightness(0.6);
+      -webkit-backdrop-filter: blur(2px) brightness(0.6);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .hero-bg-glow {
@@ -397,17 +428,24 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       width: 100%;
       position: relative;
       z-index: 3;
     }
 
+    .hero-grid .section-badge {
+      margin-bottom: 20px;
+      letter-spacing: 0.15em;
+      font-size: 11.5px;
+      color: var(--color-gold);
+    }
+
     .hero-title {
-      font-size: clamp(44px, 6vw, 76px);
+      font-size: clamp(42px, 5.8vw, 76px);
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.12;
       letter-spacing: -0.03em;
       color: var(--color-text);
       margin-bottom: 24px;
@@ -415,7 +453,7 @@
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #a3a1ff 0%, #6366f1 100%);
+      background: linear-gradient(135deg, #ffe599 0%, #ffb834 50%, #b27c1a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
@@ -423,10 +461,10 @@
 
     .hero-desc {
       font-size: 18px;
-      line-height: 1.6;
-      color: #a3a3a3;
-      max-width: 640px;
-      margin: 0 auto 40px auto;
+      line-height: 1.65;
+      color: var(--color-text-muted);
+      max-width: 680px;
+      margin: 0 auto 36px auto;
       font-family: 'Satoshi', 'Inter', sans-serif;
     }
 
@@ -436,11 +474,14 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #1c1b54, #2e2c7a);
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: #fff;
       padding: 16px 32px;
       border-radius: 8px;
@@ -449,91 +490,114 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: all 0.25s ease;
-      border: none;
+      gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
-      will-change: transform;
-      font-family: 'Inter', sans-serif;
-      box-shadow: 0 4px 24px rgba(28, 27, 84, 0.45);
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #2e2c7a, #4f4db8);
-      transform: scale(1.02);
-      box-shadow: 0 8px 32px rgba(79, 77, 184, 0.5);
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Premium Trust Metric Stats Row */
+    .hero-stats-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 48px;
+      width: 100%;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-item h4 {
+      font-size: clamp(26px, 2.8vw, 36px);
+      font-weight: 800;
+      color: var(--color-gold);
+      line-height: 1;
+      font-family: 'Cabinet Grotesk', sans-serif;
+    }
+
+    .stat-item p {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .hero-logos-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 24px;
-      opacity: 0.5;
+      gap: 32px;
+      opacity: 0.6;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 28px;
+      width: 100%;
     }
 
     .hero-logos-strip span {
-      font-size: 13px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      color: var(--color-gold);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      color: var(--color-gold-muted);
     }
 
     .hero-logos-strip svg {
       height: 20px;
       fill: currentColor;
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 0.3s, opacity 0.3s;
     }
 
-    /* Hero Background Marquee */
-    .hero-bg-marquee {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: flex;
-      overflow: hidden;
-      pointer-events: none;
+    .hero-logos-strip svg:hover {
+      color: var(--color-gold);
+      opacity: 1;
     }
 
-    .hero-bg-marquee-track {
-      display: flex;
-      width: max-content;
-      height: 100%;
-      animation: heroBgMarquee 70s linear infinite;
-    }
+    @media (max-width: 640px) {
+      #hero {
+        padding: 100px 20px 60px 20px;
+      }
 
-    .hero-bg-marquee-track img {
-      height: 100%;
-      width: auto;
-      object-fit: cover;
-      flex-shrink: 0;
-      min-width: 100vw;
-    }
+      .hero-stats-row {
+        gap: 20px;
+      }
 
-    @keyframes heroBgMarquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+      .stat-divider {
+        height: 28px;
+      }
 
-    .hero-bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(3, 3, 11, 0.45) 0%, rgba(3, 3, 11, 0.95) 85%);
-      backdrop-filter: blur(8px) brightness(0.35);
-      -webkit-backdrop-filter: blur(8px) brightness(0.35);
-      z-index: 2;
-      pointer-events: none;
+      .hero-logos-strip {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
     }
 
 
-    
+
     .visual-showcase-inner::after {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     }
 
     .visual-ui-overlay {
@@ -548,19 +612,21 @@
     }
 
     .visual-ui-stats {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
       padding: 12px 20px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .visual-ui-stats h4 {
       font-size: 12px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 4px;
     }
+
     .visual-ui-stats p {
       font-size: 20px;
       font-weight: 700;
@@ -570,35 +636,41 @@
     /* Floating UI Elements */
     .float-ui {
       position: absolute;
-      background: rgba(10,10,15,0.8);
+      background: rgba(10, 10, 15, 0.8);
       backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 12px 16px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       z-index: 4;
     }
+
     .float-ui-1 {
       top: 10%;
       right: -20px;
       animation: floating 7s ease-in-out infinite reverse;
     }
+
     .float-ui-2 {
       bottom: 20%;
       left: -30px;
       animation: floating 5s ease-in-out infinite 1s;
     }
-    
+
     .float-ui-icon {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
-      background: rgba(79,77,184,0.3);
-      display: flex; align-items: center; justify-content: center;
+      background: rgba(79, 77, 184, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #8280e8;
     }
+
     .float-ui-text {
       font-size: 13px;
       font-weight: 600;
@@ -667,145 +739,1017 @@
       background: var(--color-bg);
     }
 
-    .cards-grid {
+    .values-section {
+      background: #0d0f1e;
+      padding: 48px 24px;
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .values-section .section-label {
+      text-align: center;
+      color: #f5c518;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .values-section .section-title {
+      text-align: center;
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: 700;
+      margin: 0 0 40px;
+    }
+
+    .values-section .cards-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 60px;
+      gap: 16px;
     }
 
-    .ww-card {
-      background: var(--color-section-bg);
-      border-radius: 12px;
-      padding: 40px 32px;
-      border: 1px solid var(--color-border);
-      border-bottom: 2px solid var(--color-border);
+    .value-card {
       position: relative;
+      background: #131629;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 28px 22px;
       overflow: hidden;
-      transition: all 0.25s ease;
-      will-change: transform;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(.22, .68, 0, 1.2), border-color 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeSlideUp 0.6s ease both;
     }
 
-    .ww-card:hover {
-      transform: translateY(-6px);
-      border-bottom-color: var(--color-accent);
-      box-shadow: 0 12px 40px rgba(28, 27, 84, 0.35);
+    .value-card:nth-child(1) {
+      animation-delay: 0.05s;
     }
 
-    .ww-num {
+    .value-card:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .value-card:nth-child(3) {
+      animation-delay: 0.25s;
+    }
+
+    .value-card:nth-child(4) {
+      animation-delay: 0.35s;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), 0 20px 48px rgba(0, 0, 0, 0.5);
+    }
+
+    .value-card:hover .card-shine {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+
+    .card-shine {
       position: absolute;
-      bottom: -20px;
-      right: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 120px;
-      font-weight: 900;
-      color: rgba(79, 77, 184, 0.08);
-      line-height: 1;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.04) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease, opacity 0.3s;
+      opacity: 0;
       pointer-events: none;
-      user-select: none;
-      transition: all 0.25s ease;
     }
 
-    .ww-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: rgba(28, 27, 84, 0.5);
+    .card-glow {
+      position: absolute;
+      bottom: -30px;
+      right: -10px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.06;
+      filter: blur(30px);
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .value-card:hover .card-glow {
+      opacity: 0.18;
+    }
+
+    .card-num {
+      position: absolute;
+      bottom: 10px;
+      right: 16px;
+      font-size: 72px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 1;
+      transition: color 0.3s;
+      user-select: none;
+    }
+
+    .value-card:hover .card-num {
+      color: rgba(255, 255, 255, 0.06);
+    }
+
+    .icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
-      color: var(--color-accent);
-      border: 1px solid var(--color-border);
+      margin-bottom: 20px;
+      transition: transform 0.3s cubic-bezier(.22, .68, 0, 1.4);
     }
 
-    .ww-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: 12px;
+    .value-card:hover .icon-wrap {
+      transform: scale(1.15) rotate(-4deg);
     }
 
-    .ww-card p {
-      font-size: 14px;
+    .icon-wrap i {
+      font-size: 20px;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0 0 10px;
+    }
+
+    .card-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+    }
+
+    .card-bullets li {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #e8e8f0;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .value-card:hover .card-bullets li {
+      transform: translateX(3px);
+    }
+
+    .bullet-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .value-card:hover .bullet-dot {
+      transform: scale(1.4);
+    }
+
+    .card-desc {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.38);
       line-height: 1.6;
-      color: var(--color-text-muted);
-      position: relative;
-      z-index: 2;
+      margin: 0;
     }
 
-    /* ── SERVICES ── */
+    .card-line {
+      height: 2px;
+      width: 28px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 14px;
+      transition: width 0.3s ease;
+    }
+
+    .value-card:hover .card-line {
+      width: 52px;
+    }
+
+    .c1 {
+      --accent: #7c6fff;
+      --accent-bg: rgba(124, 111, 255, 0.12);
+    }
+
+    .c2 {
+      --accent: #f5c518;
+      --accent-bg: rgba(245, 197, 24, 0.10);
+    }
+
+    .c3 {
+      --accent: #3ecfb2;
+      --accent-bg: rgba(62, 207, 178, 0.10);
+    }
+
+    .c4 {
+      --accent: #ff6b8a;
+      --accent-bg: rgba(255, 107, 138, 0.10);
+    }
+
+    @media (max-width: 768px) {
+      .values-section .cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       SERVICES — World-Class Awwwards Bento Grid
+     ══════════════════════════════════════════════ */
     #services {
-      background: var(--color-section-bg);
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
-
-    .bento-card {
-      background: var(--color-bg);
-      border-radius: 12px;
-      padding: 36px 32px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.25s ease;
+      background: #070B1A;
+      /* Ultra-modern dark navy */
       position: relative;
       overflow: hidden;
+      padding: 140px 60px;
+    }
+
+    /* Cinematic background noise texture */
+    .srv-noise-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glowing ambient background lighting */
+    .srv-ambient-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      height: 80vw;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.05) 0%, rgba(0, 194, 255, 0.03) 40%, transparent 70%);
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Dotted grid texture overlay */
+    .srv-dot-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Floating luxury blur orbs */
+    .srv-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    .srv-orb-1 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255, 184, 77, 0.04) 0%, rgba(255, 77, 141, 0.02) 100%);
+      top: 10%;
+      right: 5%;
+      animation: srvFloatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .srv-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.05) 0%, rgba(0, 194, 255, 0.03) 100%);
+      bottom: 10%;
+      left: 2%;
+      animation: srvFloatOrb 16s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes srvFloatOrb {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(-50px) scale(1.12) rotate(45deg);
+      }
+    }
+
+    /* ── Section Header ── */
+    .srv-header {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 80px;
+      text-align: center;
+    }
+
+    .srv-label-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .srv-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #ffb834;
+      padding: 6px 18px;
+      border-radius: 100px;
+      background-color: rgba(255, 184, 52, 0.06);
+      border: 1px solid rgba(255, 184, 52, 0.15);
+      box-shadow: 0 4px 20px rgba(255, 184, 52, 0.05);
+    }
+
+    .srv-h2 {
+      font-family: 'Outfit', 'Poppins', sans-serif;
+      font-size: clamp(40px, 6vw, 76px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: #FFFFFF;
+      max-width: 900px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    /* Glow behind title */
+    .srv-h2::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.08) 0%, transparent 60%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .cinematic-gradient-text {
+      color: #00C2FF;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 0 80px rgba(0, 194, 255, 0.3);
+    }
+
+    .srv-subhead {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #8B93A7;
+      line-height: 1.65;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Bento Grid Layout ── */
+    .srv-bento {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      perspective: 2400px;
+    }
+
+    /* Card sizing classes — all equal in 3-col grid */
+    .srv-card-sm,
+    .srv-card-md,
+    .srv-card-lg {
+      grid-column: span 1;
+    }
+
+    /* ── Luxury Card Shell ── */
+
+    .service-card {
+      position: relative;
+      border-radius: 28px;
+      padding: 48px 42px;
+      overflow: hidden;
+      cursor: pointer;
+      background: rgba(9, 13, 28, 0.55);
+      backdrop-filter: blur(28px) saturate(1.4);
+      -webkit-backdrop-filter: blur(28px) saturate(1.4);
+      border: 1px solid rgba(255, 255, 255, 0.055);
+      box-shadow:
+        0 6px 40px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        inset 0 1px 2px rgba(255, 255, 255, 0.08);
+      transition:
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+      transform-style: preserve-3d;
     }
 
-    .bento-card:hover {
-      transform: scale(1.02);
-      border-color: rgba(79, 77, 184, 0.5);
-      box-shadow: 0 8px 32px rgba(28, 27, 84, 0.3);
+    /* Grain noise texture overlay for premium glass feel */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E") center/200px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: inherit;
     }
 
-    .bento-card.featured {
-      grid-column: span 2;
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1590130985558-81a29330a113?q=80&w=2000&auto=format&fit=crop');
+    /* Cursor spotlight glow */
+    .service-card .card-spotlight {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(var(--card-accent-rgb), 0.09), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+      z-index: 2;
+      border-radius: inherit;
+    }
+
+    .service-card:hover .card-spotlight {
+      opacity: 1;
+    }
+
+    /* Shining accent border on hover (replaces old ::before) */
+
+    /* Shining Gradient Border – premium animated glow ring */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%, rgba(var(--card-accent-rgb), 0.28) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: background 0.5s ease, opacity 0.5s ease;
+      opacity: 0.65;
+      z-index: 4;
+    }
+
+    .service-card:hover {
+      background-color: rgba(14, 20, 40, 0.7);
+      border-color: rgba(var(--card-accent-rgb), 0.28);
+      box-shadow:
+        0 40px 80px -10px rgba(0, 0, 0, 0.85),
+        0 0 60px -8px rgba(var(--card-accent-rgb), 0.18),
+        0 0 0 1px rgba(var(--card-accent-rgb), 0.2) inset,
+        inset 0 1px 3px rgba(255,255,255,0.1);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card:hover::after {
+      background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.5) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(var(--card-accent-rgb), 0.7) 100%);
+      opacity: 1;
+    }
+
+    /* Cinematic cover image backdrop on hover – richer luminosity tint */
+    .srv-card-bg-cover {
+      position: absolute;
+      inset: 0;
       background-size: cover;
       background-position: center;
-      border: 1px solid var(--color-border);
+      opacity: 0;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 1;
+      transform: scale(1.08);
+      border-radius: inherit;
     }
 
-    .bento-icon-svg {
+    /* Color tint overlay for cover images */
+    .srv-card-bg-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(var(--card-accent-rgb), 0.15);
+      mix-blend-mode: multiply;
+    }
+
+    .service-card:hover .srv-card-bg-cover {
+      opacity: 0.18;
+      transform: scale(1);
+    }
+
+    /* Content z-indexing */
+    .srv-card-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    /* Luxury transparent number overlay */
+    .srv-num {
+      position: absolute;
+      bottom: 24px;
+      right: 32px;
+      font-family: 'Outfit', 'Poppins', sans-serif;
+      font-size: 120px;
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.018);
+      letter-spacing: -0.06em;
+      user-select: none;
+      pointer-events: none;
+      transition: color 0.5s ease, transform 0.5s ease;
+    }
+
+    .service-card:hover .srv-num {
+      color: rgba(var(--card-accent-rgb), 0.055);
+      transform: translateY(-4px);
+    }
+
+    /* Icon wrap – premium glow tile */
+    .srv-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(var(--card-accent-rgb), 0.1);
+      border: 1px solid rgba(var(--card-accent-rgb), 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(var(--card-accent-rgb), 0.12);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .service-card:hover .srv-icon-wrap {
+      transform: scale(1.15) rotate(-10deg);
+      background: rgba(var(--card-accent-rgb), 0.2);
+      border-color: rgba(var(--card-accent-rgb), 0.4);
+      box-shadow: 0 8px 30px rgba(var(--card-accent-rgb), 0.25);
+    }
+
+    .srv-icon-wrap svg {
       width: 24px;
       height: 24px;
-      stroke: var(--color-gold);
-      stroke-width: 2;
+      stroke: var(--card-color);
+      stroke-width: 1.8;
       fill: none;
-      margin-bottom: 20px;
     }
 
-    .bento-card h3 {
-      font-size: 20px;
+    /* Elegant thin visual divider line */
+    .srv-line {
+      width: 32px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--card-color) 0%, rgba(var(--card-accent-rgb), 0.2) 100%);
+      margin-bottom: 22px;
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(var(--card-accent-rgb), 0.3);
+      transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card:hover .srv-line {
+      width: 72px;
+    }
+
+    /* Typography hierarchy adjustments */
+    .srv-title {
+      font-family: 'Outfit', 'Poppins', sans-serif;
+      font-size: 22px;
       font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: 12px;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin: 0 0 14px;
     }
 
-    .bento-card p {
+    .srv-desc {
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
-      line-height: 1.6;
-      color: var(--color-text-muted);
-      margin-bottom: 16px;
+      line-height: 1.65;
+      color: #C7CEDB;
+      margin: 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
     }
 
-    .bento-result {
-      font-size: 13px;
+    .service-card:hover .srv-desc {
+      opacity: 0.95;
+    }
+
+    /* Camera Recording Badge (Luxury brand film custom UI) */
+    .srv-blip {
+      position: absolute;
+      top: 36px;
+      right: 36px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 77, 141, 0.08);
+      border: 1px solid rgba(255, 77, 141, 0.22);
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #FF4D8D;
+      letter-spacing: 0.08em;
+      z-index: 5;
+    }
+
+    .srv-blip-dot {
+      width: 6px;
+      height: 6px;
+      background: #FF4D8D;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #FF4D8D;
+      animation: blipAnim 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes blipAnim {
+      0% {
+        opacity: 0.4;
+        transform: scale(0.85);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    /* Equalizer wave visualizer – 18 bars */
+    .podcast-visualizer {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 64px;
+      padding: 14px 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      margin-top: auto;
+      width: fit-content;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.04);
+    }
+
+    .podcast-visualizer .bar {
+      width: 3px;
+      height: 8px;
+      border-radius: 3px;
+      transition: height 0.3s ease;
+    }
+
+    /* Alternate bar colours for rainbow waveform effect */
+    .podcast-visualizer .bar:nth-child(odd)  { background: var(--card-color); }
+    .podcast-visualizer .bar:nth-child(even) { background: rgba(var(--card-accent-rgb), 0.55); }
+
+    .service-card:hover .podcast-visualizer .bar {
+      animation: wavePulse 1.1s ease-in-out infinite alternate;
+      box-shadow: 0 0 6px rgba(var(--card-accent-rgb), 0.4);
+    }
+
+    .podcast-visualizer .bar:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .podcast-visualizer .bar:nth-child(2) {
+      animation-delay: 0.35s;
+    }
+
+    .podcast-visualizer .bar:nth-child(3) {
+      animation-delay: 0.18s;
+    }
+
+    .podcast-visualizer .bar:nth-child(4) {
+      animation-delay: 0.5s;
+    }
+
+    .podcast-visualizer .bar:nth-child(5) {
+      animation-delay: 0.25s;
+    }
+
+    .podcast-visualizer .bar:nth-child(6) {
+      animation-delay: 0.42s;
+    }
+
+    .podcast-visualizer .bar:nth-child(7) {
+      animation-delay: 0.15s;
+    }
+
+    .podcast-visualizer .bar:nth-child(8) {
+      animation-delay: 0.3s;
+    }
+
+    .podcast-visualizer .bar:nth-child(9) {
+      animation-delay: 0.45s;
+    }
+
+    .podcast-visualizer .bar:nth-child(10) {
+      animation-delay: 0.2s;
+    }
+
+    .podcast-visualizer .bar:nth-child(11) {
+      animation-delay: 0.28s;
+    }
+
+    .podcast-visualizer .bar:nth-child(12) {
+      animation-delay: 0.08s;
+    }
+
+    .podcast-visualizer .bar:nth-child(13) {
+      animation-delay: 0.55s;
+    }
+
+    .podcast-visualizer .bar:nth-child(14) {
+      animation-delay: 0.15s;
+    }
+
+    .podcast-visualizer .bar:nth-child(15) {
+      animation-delay: 0.38s;
+    }
+
+    .podcast-visualizer .bar:nth-child(16) {
+      animation-delay: 0.22s;
+    }
+
+    .podcast-visualizer .bar:nth-child(17) {
+      animation-delay: 0.48s;
+    }
+
+    .podcast-visualizer .bar:nth-child(18) {
+      animation-delay: 0.12s;
+    }
+
+    @keyframes wavePulse {
+      0% {
+        height: 8px;
+      }
+
+      100% {
+        height: 38px;
+      }
+    }
+
+    /* Widescreen split content */
+    .srv-widescreen-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Premium Bullet list */
+    .srv-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .srv-bullets li {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #8B93A7;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .service-card:hover .srv-bullets li {
+      color: #C7CEDB;
+      transform: translateX(6px);
+    }
+
+    .srv-bullets li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--card-color);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--card-color);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .srv-bullets li::before {
+      transform: scale(1.3);
+    }
+
+    /* Premium Pill Buttons */
+    .srv-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.15) 0%, rgba(var(--card-accent-rgb), 0.3) 100%);
+      border: 1px solid rgba(var(--card-accent-rgb), 0.35);
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover .srv-cta {
+      background: linear-gradient(135deg, var(--card-color) 0%, #FFFFFF 260%);
+      color: #070B1A;
+      border-color: transparent;
+      transform: scale(1.03) translateY(-1px);
+      box-shadow: 0 10px 30px rgba(var(--card-accent-rgb), 0.35);
+    }
+
+    .srv-cta svg {
+      width: 16px;
+      height: 16px;
+      stroke: #FFFFFF;
+      stroke-width: 2.2;
+      fill: none;
+      transition: transform 0.3s ease, stroke 0.3s ease;
+    }
+
+    .service-card:hover .srv-cta svg {
+      stroke: #070B1A;
+      transform: translateX(4px);
+    }
+
+    /* Platform tag / feature pill styles */
+    .srv-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--color-gold);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.25s ease;
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 6px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(8px);
     }
 
-    .bento-card:hover .bento-result {
+    .service-card:hover .srv-tag {
+      color: var(--card-color);
+      background: rgba(var(--card-accent-rgb), 0.14);
+      border-color: rgba(var(--card-accent-rgb), 0.35);
+      box-shadow: 0 0 12px rgba(var(--card-accent-rgb), 0.12);
+    }
+
+    /* Camera HUD viewfinder overlay (Brand Film card) */
+    .srv-hud {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .service-card:hover .srv-hud {
       opacity: 1;
-      transform: translateY(0);
+    }
+
+    .srv-hud-corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: rgba(var(--card-accent-rgb), 0.6);
+      border-style: solid;
+    }
+
+    .srv-hud-corner.tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+    .srv-hud-corner.tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+    .srv-hud-corner.bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+    .srv-hud-corner.br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+    .srv-hud-hline, .srv-hud-vline {
+      position: absolute;
+      background: rgba(var(--card-accent-rgb), 0.2);
+    }
+    .srv-hud-hline { top: 50%; left: 10%; width: 80%; height: 1px; transform: translateY(-50%); }
+    .srv-hud-vline { left: 50%; top: 10%; height: 80%; width: 1px; transform: translateX(-50%); }
+
+    .srv-hud-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px; height: 12px;
+      border: 1px solid rgba(var(--card-accent-rgb), 0.5);
+      border-radius: 50%;
+    }
+
+    /* Stats metric row (reels card) */
+    .srv-stat-row {
+      display: flex;
+      gap: 28px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 20px;
+      margin-top: auto;
+    }
+
+    .srv-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .srv-stat-val {
+      font-family: 'Outfit', 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover .srv-stat-val {
+      color: var(--card-color);
+    }
+
+    .srv-stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .srv-widescreen-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .srv-bento {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #services {
+        padding: 90px 24px;
+      }
+
+      .srv-bento {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .service-card {
+        grid-column: span 1 !important;
+        padding: 38px 30px;
+      }
+
+      .srv-num {
+        font-size: 80px;
+      }
     }
 
     /* ── PORTFOLIO ── */
@@ -1123,140 +2067,364 @@
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--color-bg);
+      position: relative;
+      background: radial-gradient(circle at 80% 20%, rgba(79, 77, 184, 0.15) 0%, rgba(7, 7, 26, 0) 50%),
+        radial-gradient(circle at 20% 80%, rgba(124, 111, 255, 0.12) 0%, rgba(7, 7, 26, 0) 50%),
+        var(--color-bg);
+      padding: 120px 0;
+      overflow: hidden;
     }
 
-    .contact-grid {
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1500&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-grid-modern {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
-      margin-top: 40px;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 100px;
+      align-items: start;
     }
 
-    .contact-img {
-      width: 100%;
-      height: 300px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-bottom: 32px;
-      border: 1px solid var(--color-border);
+    @media (max-width: 991px) {
+      .contact-grid-modern {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .contact-container {
+        padding: 0 24px;
+      }
     }
 
-    .contact-info-block {
-      margin-bottom: 24px;
+    /* Left column header */
+    .contact-left-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
-    .contact-info-block h4 {
-      font-size: 13px;
-      color: var(--color-text-muted);
+    /* Giant outline-glow title */
+    .contact-neon-title {
+      font-size: clamp(52px, 7.5vw, 84px);
+      font-weight: 900;
+      line-height: 0.95;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.95);
+      letter-spacing: -0.01em;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.25)) drop-shadow(0 0 30px rgba(124, 111, 255, 0.45));
+      margin-bottom: 0;
+      user-select: none;
     }
 
-    .contact-info-block p {
-      font-size: 16px;
-      color: var(--color-text);
-      font-weight: 500;
-    }
-
-    .btn-whatsapp {
-      background: #25D366;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 50px;
-      display: inline-flex;
+    .contact-neon-us-row {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 16px;
-      transition: all 0.25s ease;
+      gap: 20px;
+      margin-top: 5px;
+      width: 100%;
     }
 
-    .btn-whatsapp:hover {
-      background: #1ebe57;
-      transform: scale(1.02);
+    .contact-neon-us-row .contact-neon-title {
+      flex-shrink: 0;
     }
 
-    .contact-form {
-      background: var(--color-section-bg);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 40px;
+    .contact-neon-divider {
+      flex-grow: 1;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 9999px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 25px rgba(124, 111, 255, 0.8);
+      margin-top: 10px;
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .contact-description {
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      margin-top: 40px;
+      font-weight: 400;
+      max-width: 480px;
+    }
+
+    .contact-details-list {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 480px;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
       gap: 16px;
     }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--color-text-muted);
-      margin-bottom: 8px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      height: 48px;
-      padding: 0 16px;
-      border: 1px solid var(--color-border);
+    .contact-detail-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
       border-radius: 8px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      color: var(--color-text);
-      background: var(--color-bg);
-      outline: none;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      background: rgba(124, 111, 255, 0.08);
+      border: 1px solid rgba(124, 111, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
     }
 
-    .form-group textarea {
-      height: 120px;
-      padding: 16px;
+    .contact-detail-item:hover .contact-detail-icon {
+      background: rgba(124, 111, 255, 0.15);
+      border-color: rgba(124, 111, 255, 0.35);
+      transform: scale(1.05);
+    }
+
+    .contact-detail-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #7c6fff;
+    }
+
+    .detail-val {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    a.detail-val:hover {
+      color: #7c6fff;
+    }
+
+    /* Right column form */
+    .contact-right-form-wrapper {
+      width: 100%;
+    }
+
+    .contact-form-heading {
+      font-size: 32px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-family: 'Cabinet Grotesk', 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-form-subheading {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      margin-bottom: 48px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .contact-minimal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .contact-form-field {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-form-field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .contact-underline-input {
+      border: none !important;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      padding: 12px 4px !important;
+      color: #ffffff !important;
+      font-size: 16px !important;
+      font-family: 'Inter', sans-serif !important;
+      outline: none !important;
+      width: 100% !important;
+      transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .contact-underline-input::placeholder {
+      color: rgba(255, 255, 255, 0.28);
+      font-size: 15px;
+    }
+
+    textarea.contact-underline-input {
+      min-height: 100px;
       resize: vertical;
     }
 
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 2px var(--color-gold-muted);
+    .contact-underline-input:focus {
+      border-bottom: 1.5px solid #7c6fff !important;
+      box-shadow: 0 4px 12px -4px rgba(124, 111, 255, 0.25) !important;
     }
 
-    .form-submit {
+    /* Solid Premium Indigo/Blue Button */
+    .contact-btn-submit {
+      margin-top: 12px;
       width: 100%;
-      background: linear-gradient(135deg, #1c1b54, #2e2c7a);
-      color: #fff;
-      height: 48px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
+      height: 52px;
+      background: #7c6fff;
+      color: #ffffff;
       border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
       cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 20px rgba(28, 27, 84, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(124, 111, 255, 0.3);
     }
 
-    .form-submit:hover {
-      background: linear-gradient(135deg, #2e2c7a, #4f4db8);
-      box-shadow: 0 8px 28px rgba(79, 77, 184, 0.5);
+    .contact-btn-submit:hover {
+      background: #ffffff;
+      color: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(124, 111, 255, 0.55);
     }
 
-    .response-time {
-      font-size: 13px;
-      color: var(--color-text-muted);
-      text-align: center;
-      margin-top: 16px;
+    .contact-btn-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.35);
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      animation: whatsapp-pulse 2s infinite;
+    }
+
+    .floating-whatsapp svg {
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+      transition: transform 0.35s ease;
+    }
+
+    .floating-whatsapp:hover {
+      background-color: #22c35e;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+    }
+
+    .floating-whatsapp:hover svg {
+      transform: rotate(8deg);
+    }
+
+    /* Pulsing Ripple Effect */
+    @keyframes whatsapp-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 8px 32px rgba(37, 211, 102, 0.35);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0), 0 8px 32px rgba(37, 211, 102, 0.35);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 32px rgba(37, 211, 102, 0.35);
+      }
+    }
+
+    /* Floating WhatsApp Tooltip */
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 76px;
+      background: rgba(7, 7, 26, 0.95);
+      border: 1px solid rgba(79, 77, 184, 0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(10px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .whatsapp-tooltip::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 10px;
+      height: 10px;
+      background: rgba(7, 7, 26, 0.95);
+      border-right: 1px solid rgba(79, 77, 184, 0.3);
+      border-top: 1px solid rgba(79, 77, 184, 0.3);
+    }
+
+    .floating-whatsapp:hover .whatsapp-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
     }
 
     /* ── FOOTER ── */
@@ -1676,6 +2844,7 @@
     }
 
     @media (max-width: 768px) {
+
       .why-ghost-text,
       .why-curve-svg {
         display: none;
@@ -1746,49 +2915,59 @@
   </div>
 
   <section id="hero">
-    <!-- Full Background Scrolling Marquee -->
-    <div class="hero-bg-marquee">
-      <div class="hero-bg-marquee-track">
-        <!-- Original 5 Images -->
-        <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 1">
-        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 2">
-        <img src="https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 3">
-        <img src="https://images.unsplash.com/photo-1518131672697-613becd4fab5?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 4">
-        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 5">
-        <!-- Duplicated 5 Images for Infinite Loop -->
-        <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 1">
-        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 2">
-        <img src="https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 3">
-        <img src="https://images.unsplash.com/photo-1518131672697-613becd4fab5?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 4">
-        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop" alt="Cinematic Production 5">
+    <!-- Full-bleed autoplay looping background video -->
+    <video class="hero-bg-video" src="assets/Hero_reel_video_production_company_202605211009.mp4" autoplay loop muted playsinline preload="auto" poster="brandnest_hero_bg.png" aria-hidden="true"></video>
+    
+    <!-- Dark Glassmorphic Radial Overlay Scrim -->
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <!-- Soft accent glow behind background video overlay -->
+    <div class="hero-bg-glow" aria-hidden="true"></div>
+
+    <div class="hero-grid">
+      <span class="section-badge">✦ KERALA'S PREEMINENT PRODUCTION STUDIO</span>
+      <h1 class="hero-title">We Make Brands <br><span>Unforgettable.</span></h1>
+      <p class="hero-desc">Cinematic brand stories that captivate audiences, elevate presence, and drive real business growth across Kerala and beyond.</p>
+      
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          Start Your Project
+          <i class="ti ti-arrow-up-right" style="font-size: 16px; font-weight: bold; margin-left: 2px;" aria-hidden="true"></i>
+        </a>
+        <a href="#portfolio" class="btn-secondary">
+          <i class="ti ti-player-play-filled" style="font-size: 13px;" aria-hidden="true"></i>
+          View Showreel
+        </a>
+      </div>
+
+      <!-- Metric Counter stats -->
+      <div class="hero-stats-row">
+        <div class="stat-item">
+          <h4>100+</h4>
+          <p>Films Delivered</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <h4>4K UHD</h4>
+          <p>Cinema Quality</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <h4>100%</h4>
+          <p>Client Trust</p>
+        </div>
+      </div>
+
+      <!-- Centered trusted partners row -->
+      <div class="hero-logos-strip">
+        <span>Trusted By</span>
+        <svg viewBox="0 0 100 30" width="70"><text x="0" y="20" fill="currentColor" font-family="Cabinet Grotesk" font-weight="800">MALABAR</text></svg>
+        <svg viewBox="0 0 100 30" width="70"><text x="0" y="20" fill="currentColor" font-family="Cabinet Grotesk" font-weight="800">STARTUP</text></svg>
+        <svg viewBox="0 0 100 30" width="70"><text x="0" y="20" fill="currentColor" font-family="Cabinet Grotesk" font-weight="800">CAFEROUTE</text></svg>
       </div>
     </div>
-    <!-- Dark Glassmorphic/Scrim Overlay -->
-    <div class="hero-bg-overlay"></div>
-
-    <div class="hero-grid" style="display: flex; justify-content: center; text-align: center;">
-      <div class="fade-up">
-        <h1 class="hero-title">We Make Brands <br><span>Unforgettable.</span></h1>
-        <p class="hero-desc">Cinematic brand stories that captivate audiences, elevate brands, and drive real business
-          results across Kerala and beyond.</p>
-        <div class="hero-btns">
-          <a href="#contact" class="btn-primary">Start Your Project</a>
-          <a href="#portfolio" class="nav-cta"
-            style="padding: 15px 32px; border-radius: 8px; font-size: 16px; background: transparent;">View Showreel</a>
-        </div>
-        <div class="hero-logos-strip">
-          <span>Trusted By</span>
-          <svg viewBox="0 0 100 30" width="80"><text x="0" y="20" fill="currentColor" font-family="Cabinet Grotesk"
-              font-weight="800">MALABAR</text></svg>
-          <svg viewBox="0 0 100 30" width="80"><text x="0" y="20" fill="currentColor" font-family="Cabinet Grotesk"
-              font-weight="800">STARTUP</text></svg>
-          <svg viewBox="0 0 100 30" width="80"><text x="0" y="20" fill="currentColor" font-family="Cabinet Grotesk"
-              font-weight="800">CAFEROUTE</text></svg>
-        </div>
-      </div>
-      </div>
   </section>
-  
+
   <section id="about">
     <div class="section-inner">
       <div class="about-grid">
@@ -1815,53 +2994,73 @@
 
   <section id="whoweare">
     <div class="section-inner">
-      <div style="text-align: center;" class="fade-up">
-        <span class="section-badge">Who We Are</span>
+      <div class="values-section fade-up">
+        <p class="section-label">Who We Are</p>
         <h2 class="section-title">The Values That Drive Us</h2>
-      </div>
-      <div class="cards-grid">
-        <div class="ww-card fade-up">
-          <div class="ww-num">01</div>
-          <div class="ww-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
+
+        <div class="cards-grid">
+
+          <div class="value-card c1 fade-up">
+            <div class="card-shine"></div>
+            <div class="card-glow"></div>
+            <div class="card-num">01</div>
+            <div class="icon-wrap"><i class="ti ti-shield" aria-hidden="true"></i></div>
+            <div class="card-line"></div>
+            <p class="card-title">Mission</p>
+            <p class="card-desc">To empower Kerala's brands with world-class video content that tells authentic stories
+              and drives measurable growth.</p>
           </div>
-          <h3>Mission</h3>
-          <p>To empower Kerala's brands with world-class video content that tells authentic stories and drives
-            measurable growth.</p>
-        </div>
-        <div class="ww-card fade-up" style="transition-delay: 0.1s;">
-          <div class="ww-num">02</div>
-          <div class="ww-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
+
+          <div class="value-card c2 fade-up" style="transition-delay: 0.1s;">
+            <div class="card-shine"></div>
+            <div class="card-glow"></div>
+            <div class="card-num">02</div>
+            <div class="icon-wrap"><i class="ti ti-clock" aria-hidden="true"></i></div>
+            <div class="card-line"></div>
+            <p class="card-title">Vision</p>
+            <ul class="card-bullets">
+              <li><span class="bullet-dot"></span>South India's trusted studio</li>
+              <li><span class="bullet-dot"></span>Premium films for growing brands</li>
+              <li><span class="bullet-dot"></span>Craft-led visual direction</li>
+              <li><span class="bullet-dot"></span>Every frame built to last</li>
+            </ul>
+            <p class="card-desc">To become South India's most sought-after production house — where every frame is a
+              masterpiece.</p>
           </div>
-          <h3>Vision</h3>
-          <p>To become South India's most sought-after production house — where every frame is a masterpiece.</p>
-        </div>
-        <div class="ww-card fade-up" style="transition-delay: 0.2s;">
-          <div class="ww-num">03</div>
-          <div class="ww-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            </svg>
+
+          <div class="value-card c3 fade-up" style="transition-delay: 0.2s;">
+            <div class="card-shine"></div>
+            <div class="card-glow"></div>
+            <div class="card-num">03</div>
+            <div class="icon-wrap"><i class="ti ti-activity" aria-hidden="true"></i></div>
+            <div class="card-line"></div>
+            <p class="card-title">Approach</p>
+            <ul class="card-bullets">
+              <li><span class="bullet-dot"></span>Audience research before shoot</li>
+              <li><span class="bullet-dot"></span>Sharp narrative planning</li>
+              <li><span class="bullet-dot"></span>High-precision execution</li>
+              <li><span class="bullet-dot"></span>Post-production built for impact</li>
+            </ul>
+            <p class="card-desc">Strategy-first production. We understand your audience, craft a narrative, and execute
+              with precision.</p>
           </div>
-          <h3>Approach</h3>
-          <p>Strategy-first production. We understand your audience, craft a narrative, and execute with precision.</p>
-        </div>
-        <div class="ww-card fade-up" style="transition-delay: 0.3s;">
-          <div class="ww-num">04</div>
-          <div class="ww-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-            </svg>
+
+          <div class="value-card c4 fade-up" style="transition-delay: 0.3s;">
+            <div class="card-shine"></div>
+            <div class="card-glow"></div>
+            <div class="card-num">04</div>
+            <div class="icon-wrap"><i class="ti ti-heart" aria-hidden="true"></i></div>
+            <div class="card-line"></div>
+            <p class="card-title">Promise</p>
+            <ul class="card-bullets">
+              <li><span class="bullet-dot"></span>Transparent communication</li>
+              <li><span class="bullet-dot"></span>On-time delivery</li>
+              <li><span class="bullet-dot"></span>Polished content systems</li>
+            </ul>
+            <p class="card-desc">On-time delivery, transparent communication, and content that exceeds expectations —
+              every time.</p>
           </div>
-          <h3>Promise</h3>
-          <p>On-time delivery, transparent communication, and content that exceeds expectations — every time.</p>
+
         </div>
       </div>
     </div>
@@ -1878,26 +3077,26 @@
 
     <div class="diagram-container">
       <svg class="why-curve-svg" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path class="why-track-path" d="M120 210 C218 72 315 82 405 104"/>
-        <path class="why-track-path" d="M120 210 C232 210 315 210 405 210"/>
-        <path class="why-track-path" d="M120 210 C218 348 315 338 405 316"/>
-        <path class="why-track-path" d="M595 104 C685 82 782 72 880 210"/>
-        <path class="why-track-path" d="M595 210 C685 210 768 210 880 210"/>
-        <path class="why-track-path" d="M595 316 C685 338 782 348 880 210"/>
+        <path class="why-track-path" d="M120 210 C218 72 315 82 405 104" />
+        <path class="why-track-path" d="M120 210 C232 210 315 210 405 210" />
+        <path class="why-track-path" d="M120 210 C218 348 315 338 405 316" />
+        <path class="why-track-path" d="M595 104 C685 82 782 72 880 210" />
+        <path class="why-track-path" d="M595 210 C685 210 768 210 880 210" />
+        <path class="why-track-path" d="M595 316 C685 338 782 348 880 210" />
 
-        <path class="why-trace-glow-path" d="M120 210 C218 72 315 82 405 104"/>
-        <path class="why-trace-glow-path" d="M120 210 C232 210 315 210 405 210"/>
-        <path class="why-trace-glow-path" d="M120 210 C218 348 315 338 405 316"/>
-        <path class="why-trace-glow-path" d="M595 104 C685 82 782 72 880 210"/>
-        <path class="why-trace-glow-path" d="M595 210 C685 210 768 210 880 210"/>
-        <path class="why-trace-glow-path" d="M595 316 C685 338 782 348 880 210"/>
+        <path class="why-trace-glow-path" d="M120 210 C218 72 315 82 405 104" />
+        <path class="why-trace-glow-path" d="M120 210 C232 210 315 210 405 210" />
+        <path class="why-trace-glow-path" d="M120 210 C218 348 315 338 405 316" />
+        <path class="why-trace-glow-path" d="M595 104 C685 82 782 72 880 210" />
+        <path class="why-trace-glow-path" d="M595 210 C685 210 768 210 880 210" />
+        <path class="why-trace-glow-path" d="M595 316 C685 338 782 348 880 210" />
 
-        <path class="why-trace-core-path" d="M120 210 C218 72 315 82 405 104"/>
-        <path class="why-trace-core-path" d="M120 210 C232 210 315 210 405 210"/>
-        <path class="why-trace-core-path" d="M120 210 C218 348 315 338 405 316"/>
-        <path class="why-trace-core-path" d="M595 104 C685 82 782 72 880 210"/>
-        <path class="why-trace-core-path" d="M595 210 C685 210 768 210 880 210"/>
-        <path class="why-trace-core-path" d="M595 316 C685 338 782 348 880 210"/>
+        <path class="why-trace-core-path" d="M120 210 C218 72 315 82 405 104" />
+        <path class="why-trace-core-path" d="M120 210 C232 210 315 210 405 210" />
+        <path class="why-trace-core-path" d="M120 210 C218 348 315 338 405 316" />
+        <path class="why-trace-core-path" d="M595 104 C685 82 782 72 880 210" />
+        <path class="why-trace-core-path" d="M595 210 C685 210 768 210 880 210" />
+        <path class="why-trace-core-path" d="M595 316 C685 338 782 348 880 210" />
 
       </svg>
 
@@ -1940,45 +3139,446 @@
     <div class="why-cta-card">We craft cinematic brand stories that captivate &amp; convert</div>
   </section>
 
-  <section id="services">
+  <section id="services" class="services-section">
+    <!-- Background decorations & noise overlay -->
+    <div class="srv-noise-overlay" aria-hidden="true"></div>
+    <div class="srv-ambient-glow" aria-hidden="true"></div>
+    <div class="srv-dot-grid" aria-hidden="true"></div>
+    <div class="srv-orb srv-orb-1" aria-hidden="true"></div>
+    <div class="srv-orb srv-orb-2" aria-hidden="true"></div>
+
     <div class="section-inner">
-      <div class="fade-up">
-        <span class="section-badge">Our Services</span>
-        <h2 class="section-title">Dominate the Screen</h2>
+
+      <!-- Header Area -->
+      <div class="srv-header">
+        <div class="srv-label-wrapper">
+          <p class="srv-label">Our Services</p>
+        </div>
+        <h2 class="srv-h2">Dominate the <span class="cinematic-gradient-text">Screen</span></h2>
+        <p class="srv-subhead">Cinematic content engineered to grow brands, capture attention, and drive exponential
+          engagement.</p>
       </div>
-      <div class="bento-grid">
-        <div class="bento-card featured fade-up">
-          <svg class="bento-icon-svg" viewBox="0 0 24 24">
-            <path d="M23 7l-7 5 7 5V7z" />
-            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-          </svg>
-          <h3>Brand Film Production</h3>
-          <p>Cinematic brand films that capture your essence, tell your story, and leave a lasting emotional impression.
-          </p>
-          <div class="bento-result">+240% Average Brand Recall</div>
+
+      <!-- Bento Grid Layout -->
+      <div class="srv-bento">
+
+        <!-- ① Brand Film Production -->
+        <div class="service-card srv-card-md" id="srv-hero"
+          style="--card-color: #FFB84D; --card-accent-rgb: 255, 184, 77;">
+          <div class="srv-card-bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1590130985558-81a29330a113?q=80&w=1200&auto=format&fit=crop');">
+          </div>
+
+          <!-- Cursor spotlight glow div -->
+          <div class="card-spotlight" aria-hidden="true"></div>
+
+          <!-- Camera HUD Viewfinder (fades in on hover) -->
+          <div class="srv-hud" aria-hidden="true">
+            <div class="srv-hud-corner tl"></div>
+            <div class="srv-hud-corner tr"></div>
+            <div class="srv-hud-corner bl"></div>
+            <div class="srv-hud-corner br"></div>
+            <div class="srv-hud-hline"></div>
+            <div class="srv-hud-vline"></div>
+            <div class="srv-hud-center"></div>
+          </div>
+
+          <!-- Blinking camera indicator -->
+          <div class="srv-blip">
+            <span class="srv-blip-dot"></span>
+            <span>LIVE CAM</span>
+          </div>
+
+          <div class="srv-card-content">
+            <div class="srv-num" aria-hidden="true">01</div>
+
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M23 7l-7 5 7 5V7z" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+              </svg>
+            </div>
+            <div class="srv-line"></div>
+
+            <h3 class="srv-title" style="font-size: clamp(24px, 2.5vw, 32px); max-width: 380px; margin-bottom: 14px;">
+              Brand Film Production</h3>
+            <p class="srv-desc" style="font-size: 15px; max-width: 400px; margin-bottom: 20px;">Cinematic brand films
+              crafted to turn attention into emotion and emotion into measurable conversions.</p>
+
+            <ul class="srv-bullets" style="margin-bottom: 28px;">
+              <li>Concept to final cut — fully in-house</li>
+              <li>Cinematic 4K production grade</li>
+              <li>Emotionally resonant storytelling</li>
+              <li>+240% average brand recall uplift</li>
+            </ul>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+              <span class="srv-tag">4K Cinematic</span>
+              <span class="srv-tag">Color Grade</span>
+              <span class="srv-tag">Full Post</span>
+            </div>
+
+            <a href="#contact" class="srv-cta">
+              Start Your Brand Story
+              <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
         </div>
-        <div class="bento-card fade-up" style="transition-delay: 0.1s;">
-          <svg class="bento-icon-svg" viewBox="0 0 24 24">
-            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-            <line x1="12" y1="18" x2="12.01" y2="18" />
-          </svg>
-          <h3>Social Media Reels</h3>
-          <p>Platform-optimized short-form content designed to stop scrollers and drive engagement.</p>
-          <div class="bento-result">Viral Growth</div>
+
+        <!-- ② Social Media Reels -->
+        <div class="service-card srv-card-md" id="srv-c2"
+          style="--card-color: #7C5CFF; --card-accent-rgb: 124, 92, 255;">
+          <div class="srv-card-bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop');">
+          </div>
+
+          <!-- Cursor spotlight glow div -->
+          <div class="card-spotlight" aria-hidden="true"></div>
+
+          <div class="srv-card-content">
+            <div class="srv-num" aria-hidden="true">02</div>
+
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line x1="12" y1="18" x2="12.01" y2="18" />
+              </svg>
+            </div>
+            <div class="srv-line"></div>
+
+            <h3 class="srv-title" style="font-size: clamp(24px, 2.5vw, 32px); max-width: 380px; margin-bottom: 14px;">
+              Social Media Reels</h3>
+            <p class="srv-desc" style="font-size: 15px; max-width: 400px; margin-bottom: 18px;">High-retention
+              short-form content optimized for reach, engagement, and exponential growth across platforms.</p>
+
+            <ul class="srv-bullets" style="margin-bottom: 20px;">
+              <li>Platform-native vertical video (9:16)</li>
+              <li>Hook-driven storytelling in first 3 seconds</li>
+              <li>Optimized captions &amp; on-brand motion</li>
+            </ul>
+
+            <!-- Platform tags -->
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
+              <span class="srv-tag">Instagram</span>
+              <span class="srv-tag">YouTube Shorts</span>
+              <span class="srv-tag">TikTok</span>
+            </div>
+
+            <!-- Live counting stats row -->
+            <div class="srv-stat-row">
+              <div class="srv-stat-item">
+                <div class="srv-stat-val" data-count-target="10" data-count-suffix="×">0×</div>
+                <div class="srv-stat-label">Viral Reach</div>
+              </div>
+              <div class="srv-stat-item">
+                <div class="srv-stat-val" data-count-target="100" data-count-suffix="K+">0K+</div>
+                <div class="srv-stat-label">Avg. Views/Reel</div>
+              </div>
+              <div class="srv-stat-item">
+                <div class="srv-stat-val" data-count-target="3" data-count-suffix="s">0s</div>
+                <div class="srv-stat-label">Hook Strategy</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bento-card fade-up" style="transition-delay: 0.2s;">
-          <svg class="bento-icon-svg" viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <line x1="3" y1="9" x2="21" y2="9" />
-            <line x1="9" y1="21" x2="9" y2="9" />
-          </svg>
-          <h3>Corporate Videos</h3>
-          <p>Professional corporate productions that communicate your company culture and achievements.</p>
-          <div class="bento-result">Build Authority</div>
+
+        <!-- ③ Corporate Videos -->
+        <div class="service-card srv-card-sm" id="srv-c3"
+          style="--card-color: #00C2FF; --card-accent-rgb: 0, 194, 255;">
+          <div class="srv-card-bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');">
+          </div>
+          <div class="card-spotlight" aria-hidden="true"></div>
+
+          <div class="srv-card-content">
+            <div class="srv-num" aria-hidden="true">03</div>
+
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="9" y1="21" x2="9" y2="9" />
+              </svg>
+            </div>
+            <div class="srv-line"></div>
+
+            <h3 class="srv-title">Corporate Videos</h3>
+            <p class="srv-desc" style="margin-bottom: 20px;">Professional storytelling for modern companies, teams, and
+              products that converts prospects into clients.</p>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+              <span class="srv-tag">Brand Profile</span>
+              <span class="srv-tag">Product Demos</span>
+              <span class="srv-tag">Investor Decks</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <!-- ④ Testimonials & Interviews -->
+        <div class="service-card srv-card-sm" id="srv-c4"
+          style="--card-color: #FF4D8D; --card-accent-rgb: 255, 77, 141;">
+          <div class="srv-card-bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop');">
+          </div>
+          <div class="card-spotlight" aria-hidden="true"></div>
+
+          <div class="srv-card-content">
+            <div class="srv-num" aria-hidden="true">04</div>
+
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+            </div>
+            <div class="srv-line"></div>
+
+            <h3 class="srv-title">Testimonials &amp; Interviews</h3>
+            <p class="srv-desc" style="margin-bottom: 20px;">Authentic human stories that build trust and increase
+              credibility at every marketing funnel stage.</p>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+              <span class="srv-tag">Client Reviews</span>
+              <span class="srv-tag">Expert Q&amp;A</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑤ Event Videography -->
+        <div class="service-card srv-card-sm" id="srv-c5"
+          style="--card-color: #FFB84D; --card-accent-rgb: 255, 184, 77;">
+          <div class="srv-card-bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop');">
+          </div>
+          <div class="card-spotlight" aria-hidden="true"></div>
+
+          <div class="srv-card-content">
+            <div class="srv-num" aria-hidden="true">05</div>
+
+            <div class="srv-icon-wrap">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div class="srv-line"></div>
+
+            <h3 class="srv-title">Event Videography</h3>
+            <p class="srv-desc" style="margin-bottom: 20px;">Capture brand launches, corporate conferences, and premium
+              events with absolute cinematic energy and precision.</p>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+              <span class="srv-tag">Product Launches</span>
+              <span class="srv-tag">Summits</span>
+              <span class="srv-tag">Award Nights</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⑥ Podcast Production -->
+        <div class="service-card srv-card-lg" id="srv-c6"
+          style="--card-color: #7C5CFF; --card-accent-rgb: 124, 92, 255;">
+          <div class="srv-card-bg-cover"
+            style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1600&auto=format&fit=crop');">
+          </div>
+          <div class="card-spotlight" aria-hidden="true"></div>
+
+          <div class="srv-card-content">
+            <div class="srv-num" aria-hidden="true">06</div>
+
+            <div class="srv-widescreen-grid">
+
+              <!-- Left Column: Details -->
+              <div>
+                <div class="srv-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" y1="19" x2="12" y2="22" />
+                    <line x1="8" y1="22" x2="16" y2="22" />
+                  </svg>
+                </div>
+                <div class="srv-line"></div>
+
+                <h3 class="srv-title"
+                  style="font-size: clamp(24px, 2.8vw, 36px); max-width: 480px; margin-bottom: 16px;">Podcast Production
+                </h3>
+                <p class="srv-desc" style="font-size: 15px; max-width: 520px; margin-bottom: 18px;">Studio-quality
+                  multi-camera video and high-fidelity audio podcasts designed for brands, creators, and thought
+                  leaders.</p>
+
+                <ul class="srv-bullets" style="margin-bottom: 24px;">
+                  <li>Multi-cam dynamic switching (4K)</li>
+                  <li>Professional acoustic setup and audio engineering</li>
+                  <li>Social media micro-clip extraction (reels/shorts)</li>
+                  <li>Full distribution management across Spotify &amp; Apple Podcasts</li>
+                </ul>
+
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+                  <span class="srv-tag">Spotify</span>
+                  <span class="srv-tag">Apple Podcasts</span>
+                  <span class="srv-tag">YouTube</span>
+                </div>
+
+                <a href="#contact" class="srv-cta">
+                  Book Your Studio Session
+                  <svg viewBox="0 0 24 24">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Right Column: 18-Bar Live Audio Visualizer -->
+              <div
+                style="display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; padding: 28px 40px; background: rgba(0,0,0,0.28); border: 1px solid rgba(124,92,255,0.12); border-radius: 24px; backdrop-filter: blur(16px); min-height: 260px; width:100%;">
+                <div
+                  style="font-family:'Outfit','Poppins',sans-serif; font-size:18px; font-weight:800; color:#fff; display:flex; align-items:center; gap:10px; letter-spacing:-0.02em;">
+                  <span
+                    style="width:8px; height:8px; border-radius:50%; background:var(--card-color); box-shadow: 0 0 8px var(--card-color); animation: blipAnim 1s ease-in-out infinite alternate;"></span>
+                  STUDIO ACTIVE
+                </div>
+                <p
+                  style="font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.38); text-align:center; max-width:220px; line-height:1.6;">
+                  Hover to activate the live frequency waveform signal.</p>
+
+                <!-- Equalizer waveform — 18 bars -->
+                <div class="podcast-visualizer">
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.srv-bento -->
+    </div><!-- /.section-inner -->
   </section>
+
+  <script>
+      /* ── Services GSAP Scroll Reveal & Spotlight ── */
+      (function () {
+        if (!window.gsap || !window.ScrollTrigger) return;
+
+        // Luxury Staggered reveal animation
+        gsap.from(".service-card", {
+          y: 80,
+          opacity: 0,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".services-section",
+            start: "top 80%"
+          }
+        });
+
+        // Interactive Spotlight Cursor Effect for Service Cards
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+          });
+        });
+
+        /* Subtle parallax on hero card */
+        gsap.to('#srv-hero', {
+          yPercent: -6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#services',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.4
+          }
+        });
+      })();
+  </script>
+
+  <script>
+    /* ── Premium 3D Card Tilt ── */
+    (function () {
+      const TILT_MAX = 12; // max degrees of rotation
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect   = card.getBoundingClientRect();
+          const cx     = rect.left + rect.width  / 2;
+          const cy     = rect.top  + rect.height / 2;
+          const dx     = (e.clientX - cx) / (rect.width  / 2); // -1 to +1
+          const dy     = (e.clientY - cy) / (rect.height / 2); // -1 to +1
+          const rotX   = (-dy * TILT_MAX).toFixed(2);
+          const rotY   = ( dx * TILT_MAX).toFixed(2);
+          card.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px) scale(1.015)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+          card.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+          // Reset transition after animation
+          setTimeout(() => { card.style.transition = ''; }, 700);
+        });
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'none';
+        });
+      });
+    })();
+
+    /* ── Live Stat Counters (Card 2 – Social Reels) ── */
+    (function () {
+      const c2 = document.getElementById('srv-c2');
+      if (!c2) return;
+
+      const counters = c2.querySelectorAll('.srv-stat-val[data-count-target]');
+      let rafIds = [];
+
+      function animateCountUp(el, target, suffix, duration) {
+        const start = performance.now();
+        function step(now) {
+          const pct      = Math.min((now - start) / duration, 1);
+          const ease     = 1 - Math.pow(1 - pct, 3); // cubic ease-out
+          const current  = Math.floor(ease * target);
+          el.textContent = current + suffix;
+          if (pct < 1) rafIds.push(requestAnimationFrame(step));
+          else el.textContent = target + suffix;
+        }
+        rafIds.push(requestAnimationFrame(step));
+      }
+
+      function cancelAll() {
+        rafIds.forEach(id => cancelAnimationFrame(id));
+        rafIds = [];
+      }
+
+      c2.addEventListener('mouseenter', () => {
+        cancelAll();
+        counters.forEach(el => {
+          const target   = +el.dataset.countTarget;
+          const suffix   = el.dataset.countSuffix || '';
+          animateCountUp(el, target, suffix, 1000);
+        });
+      });
+
+      c2.addEventListener('mouseleave', () => {
+        cancelAll();
+        // Instantly reset to 0 suffixed display
+        counters.forEach(el => {
+          el.textContent = '0' + (el.dataset.countSuffix || '');
+        });
+      });
+    })();
+  </script>
 
   <section id="portfolio">
     <div class="section-inner">
@@ -2120,61 +3720,93 @@
   </section>
 
   <section id="contact">
-    <div class="section-inner">
-      <div class="fade-up">
-        <span class="section-badge">Contact Us</span>
-        <h2 class="section-title">Let's Create Something<br>Extraordinary</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="fade-up" style="transition-delay: 0.1s;">
-          <img src="https://images.unsplash.com/photo-1590130985558-81a29330a113?q=80&w=600&auto=format&fit=crop"
-            alt="Studio" class="contact-img">
-          <div class="contact-info-block">
-            <h4>Studio Address</h4>
-            <p>Brandnest Studio, Kozhikode, Kerala — 673001</p>
+    <div class="contact-container">
+      <div class="contact-grid-modern">
+        <!-- Left Side: Neon Outlined Title + Description -->
+        <div class="contact-left-content fade-up">
+          <div class="contact-neon-container">
+            <h2 class="contact-neon-title">Contact</h2>
+            <div class="contact-neon-us-row">
+              <h2 class="contact-neon-title">Us</h2>
+              <div class="contact-neon-divider"></div>
+            </div>
           </div>
-          <div class="contact-info-block">
-            <h4>Email Us</h4>
-            <p>hello@brandnest.in</p>
+          <p class="contact-description">
+            We craft cinematic visual experiences that command attention, build deep audience trust, and drive
+            high-impact growth for modern brands across Kerala and South India. Partner with our Kozhikode studio to
+            tell your story like never before.
+          </p>
+
+          <!-- Contact Info List -->
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c6fff" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <span class="detail-label">Location</span>
+                <span class="detail-val">Hilite Business Park Calicut, Tower 2, 3rd Floor</span>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c6fff" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <span class="detail-label">Email Us</span>
+                <a href="mailto:brandnestproductions@gmail.com" class="detail-val">brandnestproductions@gmail.com</a>
+              </div>
+            </div>
           </div>
-          <a href="#" class="btn-whatsapp">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
-            </svg>
-            Chat on WhatsApp
-          </a>
         </div>
-        <div class="contact-form fade-up" style="transition-delay: 0.2s;">
-          <h3 style="font-size: 24px; margin-bottom: 24px; font-family: 'Poppins', sans-serif;">Send a Message</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" placeholder="John Doe">
+
+        <!-- Right Side: Minimalist Underline Form -->
+        <div class="contact-right-form-wrapper fade-up" style="transition-delay: 0.15s;">
+          <h3 class="contact-form-heading">Let's Stay in Touch</h3>
+          <p class="contact-form-subheading">We want to hear your questions, suggestions, or concerns.</p>
+
+          <form class="contact-minimal-form"
+            onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully. We will get back to you shortly.');">
+            <div class="contact-form-field">
+              <label for="form-name">Name</label>
+              <input type="text" id="form-name" class="contact-underline-input" placeholder="Name" required>
             </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="john@example.com">
+
+            <div class="contact-form-field">
+              <label for="form-email">Email</label>
+              <input type="email" id="form-email" class="contact-underline-input" placeholder="Email" required>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Service</label>
-            <select>
-              <option>Brand Film</option>
-              <option>Commercial</option>
-              <option>Social Media</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Tell us about your project..."></textarea>
-          </div>
-          <button class="form-submit">Submit Request</button>
-          <div class="response-time">⚡ Average response time: under 2 hours</div>
+
+            <div class="contact-form-field">
+              <label for="form-message">Message</label>
+              <textarea id="form-message" class="contact-underline-input" placeholder="Message" required></textarea>
+            </div>
+
+            <button type="submit" class="contact-btn-submit">Send</button>
+          </form>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Floating WhatsApp Widget -->
+  <a href="https://wa.me/919999999999" class="floating-whatsapp" target="_blank" rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+    </svg>
+    <div class="whatsapp-tooltip">Chat with us on WhatsApp</div>
+  </a>
 
   <footer>
     <div class="section-inner">
@@ -2234,6 +3866,27 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/DrawSVGPlugin.min.js"></script>
 
   <script>
+    // Autoplay helper for hero background video
+    document.addEventListener('DOMContentLoaded', () => {
+      const bgVideo = document.querySelector('.hero-bg-video');
+      if (bgVideo) {
+        // Try to play immediately
+        const playPromise = bgVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Autoplay prevented by browser policy. Force-playing on first user action.", error);
+            const forcePlay = () => {
+              bgVideo.play();
+              document.removeEventListener('click', forcePlay);
+              document.removeEventListener('touchstart', forcePlay);
+            };
+            document.addEventListener('click', forcePlay);
+            document.addEventListener('touchstart', forcePlay);
+          });
+        }
+      }
+    });
+
     // Navbar scroll
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -2289,9 +3942,9 @@
     });
 
     // WHY BRANDNEST: curved path trace animation
-    (function() {
+    (function () {
       const pluginsToReg = [];
-      if (window.gsap && window.ScrollTrigger)   pluginsToReg.push(ScrollTrigger);
+      if (window.gsap && window.ScrollTrigger) pluginsToReg.push(ScrollTrigger);
       if (window.gsap && window.MotionPathPlugin) pluginsToReg.push(MotionPathPlugin);
       if (pluginsToReg.length && window.gsap) gsap.registerPlugin(...pluginsToReg);
 
@@ -2304,16 +3957,16 @@
       // Labels and ghost text reveal on scroll entry
       const revealTl = gsap.timeline({
         scrollTrigger: window.ScrollTrigger ? {
-          trigger      : '#why-brandnest',
-          start        : 'top 78%',
+          trigger: '#why-brandnest',
+          start: 'top 78%',
           toggleActions: 'play none none none'
         } : undefined,
         defaults: { ease: 'power3.out' }
       });
       revealTl
-        .to('.why-ghost-text',  { opacity: 1, duration: 1.4, ease: 'power2.out' }, 0)
+        .to('.why-ghost-text', { opacity: 1, duration: 1.4, ease: 'power2.out' }, 0)
         .to('.why-label-inner', { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.13 }, 0.2)
-        .to('.why-cta-card',    { opacity: 1, y: 0, duration: 0.9 }, 0.65);
+        .to('.why-cta-card', { opacity: 1, y: 0, duration: 0.9 }, 0.65);
 
       const runners = traceCores.map((core, index) => ({
         core,
@@ -2379,10 +4032,10 @@
 
       if (window.ScrollTrigger) {
         ScrollTrigger.create({
-          trigger : '#why-brandnest',
-          start   : 'top 85%',
-          once    : true,
-          onEnter : startLoop
+          trigger: '#why-brandnest',
+          start: 'top 85%',
+          once: true,
+          onEnter: startLoop
         });
       } else {
         startLoop();
