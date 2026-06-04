@@ -1138,11 +1138,18 @@
       perspective: 2400px;
     }
 
-    /* Card sizing classes — all equal in 3-col grid */
-    .srv-card-sm,
-    .srv-card-md,
-    .srv-card-lg {
+    /* Card sizing classes for bento grid */
+    .srv-card-sm {
       grid-column: span 1;
+    }
+    .srv-card-md {
+      grid-column: span 1;
+    }
+    .srv-card-lg {
+      grid-column: span 3;
+    }
+    #srv-hero {
+      grid-column: span 2;
     }
 
     /* ── Luxury Card Shell ── */
@@ -1729,6 +1736,14 @@
 
       .srv-bento {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      #srv-hero {
+        grid-column: span 2;
+      }
+
+      .srv-card-lg {
+        grid-column: span 2;
       }
     }
 
